@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>reverse_list</title>
+</head>
+<body>
+    
+</body>
+<script>
+    class Node{
+        constructor(value){
+            this.value=value;
+            this.next=null;
+        }
+    }
+    class Linked_List{
+        constructor(){
+            this.head=null;
+            this.tail=null;
+            this.size=0;
+        }
+        append(value){
+            const newnode=new Node(value);
+            if(this.size==0){
+                this.head=newnode;
+                this.tail=newnode;
+                this.size++;
+                return this;
+            }
+            this.tail.next=newnode;
+            this.tail=newnode;
+            this.size++;
+            return this;
+        }
+        reverse(){
+            var current=this.head;
+            this.tail=this.head;
+            var prev=null;
+            var next=null;
+            for(var i=0;i<this.size;i++){
+                next=current.next;
+                current.next=prev;
+                prev=current;
+                current=next;
+            }
+            this.head=prev;
+            return this;
+        }
+        toarray(){
+            const a=[];
+            var temp=this.head;
+            while(temp.next){
+                a.push(temp);
+                temp=temp.next;
+            }
+            a.push(this.tail);
+            return a;
+        }
+    }
+    const listobj=new Linked_List();
+    listobj.append(10);
+    listobj.append(20);
+    listobj.append(30);
+    listobj.append(40);
+    listobj.append(50);
+    console.log(listobj);
+    var b=listobj.reverse();
+    console.log(b);
+    var c=listobj.toarray();
+    console.log(c);
+</script>
+</html>

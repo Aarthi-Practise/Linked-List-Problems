@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    class Node{
+        constructor (value){
+            this.value=value;
+            this.next=null;
+        }
+    }
+    class Linked_List{
+        constructor(){
+            this.head=null;
+            this.tail=null;
+            this.size=0;
+        }
+        add(value){
+            const node=new Node(value);
+            if(this.size==0){
+                this.head=node;
+                this.tail=node;
+                this.size++;
+                return this;
+            }
+            this.tail.next=node;
+            this.tail=node;
+            this.size++;
+            return this;
+        }
+        swap(){
+            var current=this.head;
+            for(var i=0;i<this.size-1;i++){
+                if(i%2==0){
+                    var sum=current.value+current.next.value;
+                    current.value=sum-current.value;
+                    current.next.value=sum-current.next.value;
+                    i=i+1;
+                    current=current.next;
+                }
+                current=current.next;
+            }
+        }
+    }
+    const obj=new Linked_List;
+    obj.add(10);
+    obj.add(20);
+    obj.add(30);
+    obj.add(40);
+    obj.add(50);
+    obj.swap();
+    console.log(obj);
+</script>
+</html>

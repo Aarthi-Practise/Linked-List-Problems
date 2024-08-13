@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    class Node{
+        constructor(value){
+            this.value=value;
+            this.next=null;
+        }
+    }
+    class Linked_List{
+        constructor(){
+            this.head=null;
+            this.tail=null;
+            this.size=0;
+        }
+        add(value){
+            const node =new Node(value);
+            if(this.size==0){
+                this.head=node;
+                this.tail=node;
+                this.size++;
+                return this;
+            }
+            this.tail.next=node;
+            this.tail=node;
+            this.size++;
+            return this;
+        }
+        cycle(index1,index2){
+            if((index1==index2)||((index1==0)||(index2==0))||(index2==index1+1)){
+                return false;
+            }
+            var iindex=this.head.next;
+            for(var i=2;i<=this.size;i++){
+                var jindex=this.head;
+                for(var j=1;j<i;j++){
+                    if(((j==index1)&&(i==index2))||((j==index2)&&(i==index1))){
+                        return true;
+                        // j=i;
+                        // i=this.size;
+                    }
+                    jindex=jindex.next;
+                }
+                iindex=iindex.next;
+            }
+            return false;
+        }
+    }
+    const obj =new Linked_List;
+    obj.add(1);
+    obj.add(2);
+    obj.add(3);
+    obj.add(4);
+    obj.add(5);
+    console.log(obj);
+    res=obj.cycle(2,3);
+    console.log(res);
+</script>
+</html>

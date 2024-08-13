@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    class Node{
+        constructor(value){
+            this.value=value;
+            this.next=null;
+        }
+    }
+    class Linked_List{
+        constructor(){
+            this.head=null;
+            this.tail=null;
+            this.size=0;
+        }
+        add(value){
+            const node =new Node(value);
+            if(this.size==0){
+                this.head=node;
+                this.tail=node;
+                this.size++;
+                return this;
+            }
+            this.tail.next=node;
+            this.tail=node;
+            this.size++;
+            return this;
+        }
+        AtIndex(value,index){
+            const newnode=new Node(value);
+            if(this.size==0){
+                this.head=node;
+                this.tail=node;
+                this.size++;
+                return this;
+            }
+            var current=this.head;
+            for(var i=0;i<=this.size;i++){
+                if(i==index){
+                    newnode.next=current.next;
+                    current.next=newnode;
+                    this.size++;
+                    return this;
+                }
+                current=current.next;
+            }
+        }
+    }
+    const obj=new Linked_List();
+    obj.add(1);
+    obj.add(2);
+    obj.add(3);
+    obj.add(4);
+    obj.add(5);
+    console.log(obj);
+    obj.AtIndex(3,100);
+    console.log(obj);
+</script>
+</html>

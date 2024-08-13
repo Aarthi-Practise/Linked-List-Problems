@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    class Node{
+        constructor(value){
+            this.head=value;
+            this.next=null;
+        }
+    }
+    class Linked_List{
+        constructor(){
+            this.head=null;
+            this.tail=null;
+            this.size=0;
+        }
+        add(value){
+            const node=new Node(value);
+            if(this.size==0){
+                this.head=node;
+                this.tail=node;
+                this.size++;
+                return this;
+            }
+            this.tail.next=node;
+            this.tail=node;
+            this.size++;
+            return this;
+        }
+    }
+    array=[];
+    for(var i=1;i<=3;i++){
+        num=+prompt();
+        array.push(num);
+    }
+    const obj=new Linked_List();
+    for(var i=0;i<3;i++){
+        obj.add(array[i]);
+    }
+    console.log(obj);
+</script>
+</html>
